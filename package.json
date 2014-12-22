@@ -1,7 +1,7 @@
 {
   "name": "lite18n",
-  "version": "0.1.1",
-  "description": "A tiny i18n",
+  "version": "0.1.2",
+  "description": "A dead simple i18n module",
   "main": "lite18n.js",
   "scripts": {
     "test": "mocha"
@@ -9,7 +9,7 @@
   "keywords": [
     "i18n"
   ],
-  "author": "alexandre.jablon@gmail.com",
+  "author": "alexandre.jablon@gmail.com (alexandre [at] chauffeur-prive.com)",
   "license": "MIT",
   "devDependencies": {
     "should": "^4.4.1"
