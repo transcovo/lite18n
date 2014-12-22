@@ -1,14 +1,17 @@
 {
   "name": "lite18n",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "A tiny i18n",
-  "main": "index.js",
+  "main": "lite18n.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [
     "i18n"
   ],
   "author": "alexandre.jablon@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "should": "^4.4.1"
+  }
 }
