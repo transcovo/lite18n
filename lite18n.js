@@ -39,8 +39,9 @@ var lite18n = function (params) {
     }
     var paramKeys = Object.keys (phraseParams);
     paramKeys.forEach (function (key) {
-      string = string.replace (new RegExp ('\\{ *?\\{ *?' + key + ' *?\\} *?\\}'), phraseParams[key]);
+      string = string.replace (new RegExp ('([^{])\\{ *?' + key + ' *?\\}([^}])?', 'g'), '$1' + phraseParams[key] + '$2');
     });
+    string = string.replace (new RegExp ('\\{ *?(\\{[^{}]*\\}) *?\\}', 'g'), '$1');
     return string;
   };
   return fn;

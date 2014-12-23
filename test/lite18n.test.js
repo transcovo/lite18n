@@ -18,8 +18,8 @@ var locales = {
     fr: 'Gandalf'
   },
   'morning': {
-    en: '"Good morning!" said {{ character }}, and he meant it.',
-    fr: '"Bonne journée!", dit {{ character }}, et il le pensait vraiment.'
+    en: '"Good morning!" said { character }, and he meant it.',
+    fr: '"Bonne journée!", dit { character }, et il le pensait vraiment.'
   }
 };
 
