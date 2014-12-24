@@ -24,6 +24,10 @@ var locales = {
   'bounty': {
     en: '{character}, there is a bounty on your {{head}}',
     fr: '{character}, votre {{tête}} a été mise à prix.'
+  },
+  'precious': {
+    en: 'The {pieceOfJewelry}, it is {{ precious }} to you beyond measure.',
+    fr: 'L\'{pieceOfJewelry}, elle vous est démesurément {precious}.'
   }
 };
 
@@ -182,6 +186,22 @@ describe ('lite18n.js', function () {
 
       translatedString = __ ('bounty', 'fr', { character: 'Thorin' });
       translatedString.should.equal ('Thorin, votre {tête} a été mise à prix.');
+
+      done ();
+    });
+
+    it ('should translate the string and escape the double curly-bracketted strings', function (done) {
+      var translatedString = __ ('precious', 'en', { pieceOfJewelry: 'Arkenstone' });
+      translatedString.should.equal ('The Arkenstone, it is { precious } to you beyond measure.');
+
+      var err;
+      try {
+        translatedString = __ ('precious', 'fr', { pieceOfJewelry: 'Arkenstone' });
+      } catch (e) {
+        err = e;
+      }
+      should.exist (err);
+      err.toString ().should.match (/Format parameter "precious" has not been parsed/);
 
       done ();
     });

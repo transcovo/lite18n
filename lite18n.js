@@ -41,6 +41,10 @@ var lite18n = function (params) {
     paramKeys.forEach (function (key) {
       string = string.replace (new RegExp ('([^{])?\\{ *?' + key + ' *?\\}([^}])?', 'g'), '$1' + phraseParams[key] + '$2');
     });
+    var artifactMatch = string.match (/^\{([^{}]*)\}[^}]/) || string.match (/[^{]\{([^{}]*)\}[^}]/) || string.match (/[^{]\{([^{}]*)\}$/);
+    if (artifactMatch) {
+      throw new Error ('Format parameter "' + artifactMatch[1] + '" has not been parsed');
+    }
     string = string.replace (new RegExp ('\\{ *?(\\{[^{}]*\\}) *?\\}', 'g'), '$1');
     return string;
   };
