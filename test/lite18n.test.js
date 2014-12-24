@@ -20,6 +20,10 @@ var locales = {
   'morning': {
     en: '"Good morning!" said { character }, and he meant it.',
     fr: '"Bonne journée!", dit { character }, et il le pensait vraiment.'
+  },
+  'bounty': {
+    en: '{character}, there is a bounty on your {{head}}',
+    fr: '{character}, votre {{tête}} a été mise à prix.'
   }
 };
 
@@ -139,10 +143,10 @@ describe ('lite18n.js', function () {
       __ = require ('../lite18n.js') ({ locales: locales });  
 
       translatedString = __ ('smaug', 'en');
-      translatedString.should.eql (locales.smaug.en);
+      translatedString.should.equal (locales.smaug.en);
 
       translatedString = __ ('smaug', 'fr');
-      translatedString.should.eql (locales.smaug.fr);
+      translatedString.should.equal (locales.smaug.fr);
       done ();
     });
 
@@ -151,10 +155,10 @@ describe ('lite18n.js', function () {
       __ = require ('../lite18n.js') ({ locales: locales, defaultLocale: 'en' });  
 
       translatedString = __ ('smaug', 'de');
-      translatedString.should.eql (locales.smaug.en);
+      translatedString.should.equal (locales.smaug.en);
 
       translatedString = __ ('smaug', 'es');
-      translatedString.should.eql (locales.smaug.en);
+      translatedString.should.equal (locales.smaug.en);
       done ();
     });
 
@@ -163,11 +167,21 @@ describe ('lite18n.js', function () {
 
       translatedCharacter = __ ('characters.bilbo', 'en');
       translatedString = __ ('morning', 'en', { character: translatedCharacter });
-      translatedString.should.eql ('"Good morning!" said Bilbo, and he meant it.');
+      translatedString.should.equal ('"Good morning!" said Bilbo, and he meant it.');
 
       translatedCharacter = __ ('characters.bilbo', 'fr');
       translatedString = __ ('morning', 'fr', { character: translatedCharacter });
-      translatedString.should.eql ('"Bonne journée!", dit Bilbon, et il le pensait vraiment.');
+      translatedString.should.equal ('"Bonne journée!", dit Bilbon, et il le pensait vraiment.');
+
+      done ();
+    });
+
+    it ('should translate the string and escape the double curly-bracketted strings', function (done) {
+      var translatedString = __ ('bounty', 'en', { character: 'Thorin' });
+      translatedString.should.equal ('Thorin, there is a bounty on your {head}');
+
+      translatedString = __ ('bounty', 'fr', { character: 'Thorin' });
+      translatedString.should.equal ('Thorin, votre {tête} a été mise à prix.');
 
       done ();
     });
