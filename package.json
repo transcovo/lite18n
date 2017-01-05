@@ -12,6 +12,6 @@
   "author": "alexandre.jablon@gmail.com (alexandre [at] chauffeur-prive.com)",
   "license": "MIT",
   "devDependencies": {
-    "should": "^4.4.1"
+    "should": "4.6.5"
   }
 }
