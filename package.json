@@ -13,5 +13,8 @@
   "license": "MIT",
   "devDependencies": {
     "should": "4.6.5"
+  },
+  "engines": {
+    "node": "6.11.1"
   }
 }
